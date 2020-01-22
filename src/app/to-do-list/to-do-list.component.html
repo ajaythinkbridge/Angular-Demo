@@ -1,0 +1,7 @@
+
+    <br>
+    <app-add-item (outputToParent)="GetOutputVal($event)"></app-add-item>
+    <br>
+ <app-smart-item-list [toDoArray]="inCompleteList" [status]="'Incomplete'" (completeEvent)="completeEvent($event)"></app-smart-item-list>
+ <br>
+ <app-smart-item-list [toDoArray]="completeList" [status]="'Complete'" (incompleteEvent)="incompleteEvent($event)"></app-smart-item-list>

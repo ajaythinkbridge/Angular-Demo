@@ -1,0 +1,84 @@
+<div class="row">
+    <div class="col-md-7">
+
+        <div class="card">
+            <div class="card-header bg-default">Contact Us</div>
+
+            <div class="card-body">
+                <form class="form-horizontal" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="lblName">Name:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" formControlName="name" placeholder="Enter name">
+
+                            <div *ngIf="submitted && f.name.errors" class="text-danger">
+                                <p *ngIf="f.name.errors.required"> Name is required</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="lblEmail">Email:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" formControlName="email" placeholder="Enter email">
+                            <div *ngIf="submitted && f.email.errors" class="text-danger">
+                                <p *ngIf="f.email.errors.required">Email is required</p>
+                                <p *ngIf="f.email.errors.email">Valid email is required.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="lblQuery">Query:</label>
+                        <div class="col-sm-10">
+
+                            <textarea type="text" formControlName="query" class="md-textarea form-control" rows="5"
+                                placeholder="Your message"></textarea>
+                            <div *ngIf="submitted && f.query.errors" class="text-danger">
+                                <p *ngIf="f.query.errors.required">Message is required</p>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-primary">Send</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-header bg-default">Contact us Details</div>
+
+            <div class="card-body">
+                <ul class="list-group">
+                    <li class="list-group-item">Name: {{ contactDetailsToDisplay.name }}</li>
+                    <li class="list-group-item">Email: {{ contactDetailsToDisplay.email  }}</li>
+                    <li class="list-group-item">Query: {{ contactDetailsToDisplay.query }}</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <br>
+        <div class="card">
+            <div class="card-header bg-default">Actions taken on to do's:</div>
+
+            <div class="card-body actionsTakenFixHeight">
+                <ul class="list-group">
+                    <li class="list-group-item" *ngFor="let item of localStorageItemsArray">
+                        {{item.actionTaken}} <span>:</span> {{item.actionValue}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>

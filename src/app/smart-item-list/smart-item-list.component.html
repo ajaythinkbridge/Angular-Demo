@@ -1,0 +1,21 @@
+<div class="card">
+   <div class="card-header bg-default">{{ status }} List</div>
+   <div class="card-body">
+      <div class="row" *ngFor="let item of toDoArray; let i = index">
+
+         <div class="col-md-9">
+            <li class="list-group-item"> {{ item.title }} </li>
+         </div>
+         <div class="col-md-3">
+            <button class="btn btn btn-primary m-1" (click)="addItemInArray(item);">
+               <!-- {{ status }}  -->
+               {{ status == 'Incomplete' ? 'Complete' : 'Incomplete' }}
+            </button>
+            <button class="btn btn btn-danger" (click)="deleteItemFromArray(i);">
+               Delete
+            </button>
+         </div>
+
+      </div>
+   </div>
+</div>
